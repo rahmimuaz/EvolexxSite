@@ -1,8 +1,9 @@
 .header{
-    width: 100%;
+    width: 95%;
     margin: auto;
-    height: 53vw;
-    margin: 30px auto;
+    height: 46vw;
+    margin: 80px 50px;
+    border-radius: 20px;
     background-color: #747474;
     position: relative;
     overflow: hidden;
