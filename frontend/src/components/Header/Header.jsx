@@ -45,30 +45,30 @@ const Header = ({ scrollToProducts }) => {
           <div className="slide" style={{ backgroundImage: `url(${images[0].src})` }}>
             <div className="header-contents">
               <div className="card1">
-               {<TransparentCard />}
+                {<TransparentCard />}
               </div>
-             
+
             </div>
           </div>
-          
+
           {/* Second Image Div */}
           <div className="slide" style={{ backgroundImage: `url(${images[1].src})` }}>
             <div className="header-contents">
               <div>
-               
+
               </div>
             </div>
           </div>
 
           {/* Third Image Div */}
           <div className="slide" style={{ backgroundImage: `url(${images[2].src})` }}>
-            <div className="header-contents"> 
+            <div className="header-contents">
             </div>
           </div>
-          
+
           {/* Cloned First Image (For Seamless Transition) */}
           <div className="slide" style={{ backgroundImage: `url(${images[0].src})` }}>
-            <div className="header-contents">     
+            <div className="header-contents">
             </div>
           </div>
         </div>
