@@ -2,12 +2,9 @@
 .header {
     width: 100%;
     max-height: 87vh;
-    margin: 60px auto;
     overflow: hidden;
     position: relative;
-    padding: 40px;
-
-    
+    padding: 0px 20px;
 
 }
 
@@ -31,9 +28,6 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* Header Content */
