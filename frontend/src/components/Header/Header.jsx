@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
+import TransparentCard from '../TransparentCard/TransparentCard'
 
 const images = [
-  { src: "/evg.jpg", alt: "Apple Products" },
-  { src: "/evolexx.jpg", alt: "Samsung Products" },
-  { src: "/accessories-hero.jpg", alt: "Accessories" },
+  { src: "/evolexx.jpg", alt: "Apple Products" },
+  { src: "/samsung.jpg", alt: "Samsung Products" },
+  { src: "/Accessories.jpg", alt: "Accessories" },
 ];
 
 const Header = ({ scrollToProducts }) => {
@@ -15,7 +16,7 @@ const Header = ({ scrollToProducts }) => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
       setIndex((prevIndex) => prevIndex + 1);
-    }, 3000); // Slide every 3 seconds
+    }, 500000); // Slide every 3 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -40,15 +41,35 @@ const Header = ({ scrollToProducts }) => {
             transition: isTransitioning ? "transform 1s ease-in-out" : "none",
           }}
         >
-          {/* Original Images */}
-          {images.map((img, i) => (
-            <div key={i} className="slide" style={{ backgroundImage: `url(${img.src})` }}>
-              <div className="header-contents">
-                <h2>{img.alt}</h2>
-                <button onClick={scrollToProducts}>View Shop</button>
+          {/* First Image Div */}
+          <div className="slide" style={{ backgroundImage: `url(${images[0].src})` }}>
+            <div className="header-contents">
+              <h2>{images[0].alt}</h2>
+              <div className="card1">
+                {<TransparentCard/>}
               </div>
+              <button onClick={scrollToProducts}>View Shop</button>
             </div>
-          ))}
+          </div>
+          
+          {/* Second Image Div */}
+          <div className="slide" style={{ backgroundImage: `url(${images[1].src})` }}>
+            <div className="header-contents">
+              <h2>{images[1].alt}</h2>
+              <div>
+                {<TransparentCard/>}
+              </div>
+              <button onClick={scrollToProducts}>Explore More</button>
+            </div>
+          </div>
+
+          {/* Third Image Div */}
+          <div className="slide" style={{ backgroundImage: `url(${images[2].src})` }}>
+            <div className="header-contents">
+              <h2>{images[2].alt}</h2>
+              <button onClick={scrollToProducts}>Shop Now</button>
+            </div>
+          </div>
           
           {/* Cloned First Image (For Seamless Transition) */}
           <div className="slide" style={{ backgroundImage: `url(${images[0].src})` }}>

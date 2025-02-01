@@ -11,6 +11,7 @@ import OrderConfirmation from './pages/OrderConformation/OrderConfirmation';
 import UserOrders from './pages/UserOrders/Order'
 import UserQueries from './components/Inquiry/UserQueries';
 import EditInquiryForm from './components/Inquiry/EditInquiryForm';
+import TransparentCard from './components/TransparentCard/TransparentCard';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/contact-us" element={<ContactUsForm />} />
         <Route path="/queries" element={<UserQueries />} />
         <Route path="/edit-inquiry/:id" element={<EditInquiryForm />} /> {/* Ensure correct route here */}
+        <Route path="/TransparentCard" element={<TransparentCard />} />
       </Routes>
     </div>
   );
