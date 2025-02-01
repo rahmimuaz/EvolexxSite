@@ -2,69 +2,141 @@
   display: flex; /* Use flexbox to align children side by side */
   justify-content: space-between; /* Space out the child elements */
   width: 100%;
-  min-height: 70vh;
   position: relative;
   background: rgba(87, 86, 86, 0.6); /* Transparent background */
-  border-radius: 50px;
   overflow: hidden;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   backdrop-filter: blur(8px);
+  padding: 5px;
 }
+ 
 
-.transparent-card:hover {
-  transform: translateY(-10px); /* Slight hover effect */
-}
 
 .one{
-  display: flex; /* Use flexbox to align image and content inside each card */
+  display: flex;
   flex-direction: column; /* Stack image and content vertically */
   width: 30%; /* Adjust the width to make both divs fit side by side */
 }
 
 .card-image {
-  margin: 20px 20px;
+  display: flex; /* Use flexbox to align children side by side */
+  justify-content: space-between; /* Space out the child elements */
+  overflow: hidden;
+  position: relative;
+  min-height: 15vh;
+  margin: 10px 10px;
   width: 100%; /* Make the image take up full width of the card */
-  height: 480px; /* Adjust image height */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 50px;
-}
-
-.card-content {
-  padding: 20px;
-  text-align: center;
-  color: #ffffff;
-}
-
-.card-title {
-  font-size: 1.5em;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.card-description {
-  font-size: 1em;
-  color: #ffffff;
-}
-
-
+} 
 .two {
   display: flex; /* Use flexbox to align image and content inside each card */
   flex-direction: column; /* Stack image and content vertically */
-
   width: 68%; /* Adjust the width to make both divs fit side by side */
-  border-radius: 20px;
 }
 
 
 .card-image2{
-  margin: 20px 10px;
-  width: 90%;
-  height: 570px; /* Adjust image height */
+  width: 98%;
+  display: flex; /* Use flexbox to align children side by side */
+  justify-content: space-between; /* Space out the child elements */
+  overflow: hidden;
+  margin-top: 10px;
+  margin-left: 5px;
+  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 50px;
+  min-height: 18vh ;
+
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2vw;
+  line-height: 1;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.p1, .p2, .p3, .p4 {
+  margin: 0; /* Remove default margin for better control */
+  text-transform: uppercase; /* Make all text uppercase for consistency */
+}
+
+/* First phrase - "Upgrade" */
+.p1 {
+  font-size: max(2.5vw, 10px); /* Reduced for more compact look */
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  animation: slideIn 1s ease-out forwards;
+  opacity: 0; /* Hidden initially */
+}
+
+/* Second phrase - "your TECH" */
+.p2 {
+  font-size: max(1.8vw, 8px); /* Reduced for more compact look */
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-top: 8px; /* Reduced margin */
+  opacity: 0;
+  animation: slideIn 1s ease-out 0.5s forwards; /* Slight delay */
+}
+
+/* Third phrase - "Elevate Your" */
+.p3 {
+  font-size: max(1.8vw, 10px); /* Smaller font size */
+  font-weight: 400;
+  color: #ffffff;
+  margin-top: 12px; /* Reduced margin */
+  opacity: 0;
+  animation: slideIn 1s ease-out 1s forwards; /* Slight delay */
+}
+
+/* Last phrase - "EXPERIENCE" */
+.p4 {
+  font-size: max(3.5vw, 14px); /* Smaller font size */
+  font-weight: 200;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-top: 12px; /* Reduced margin */
+  opacity: 0;
+  animation: slideIn 1s ease-out 1.5s forwards; /* Slight delay */
+}
+
+/* Highlight text - TECH (Updated to Grey) */
+.highlight {
+  font-size: max(2vw, 14px); /* Reduced size for compactness */
+  font-weight: 900;
+  color: #808080; /* Grey color */
+  text-transform: uppercase;
+  margin-left: 5px;
+  animation: highlightGlow 1.5s ease-in-out infinite alternate;
+}
+
+/* Animation for sliding in */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for the glowing effect on highlighted text */
+@keyframes highlightGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(128, 128, 128, 0.6), 0 0 20px rgba(128, 128, 128, 0.6); /* Grey glow */
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(128, 128, 128, 1), 0 0 40px rgba(128, 128, 128, 1); /* Grey glow */
+  }
 }

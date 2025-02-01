@@ -4,19 +4,24 @@ import "./TransparentCard.css"; // Link to the CSS file for styles
 const TransparentCard = () => {
   return (
     <div className="transparent-card">
-     <div className="one">
-      <img src ='/111.jpg' alt="Card Image" className="card-image" />
-      <div className="card-content">
-        <h5 className="card-title">Card Title</h5>
-        <p className="card-description">This is some description text inside the card. You can add more details here.</p>
-      </div>
+      <div className="one">
+        <div className="text-container">
+          <p className="p1">Upgrade</p>
+          <p className="p2">your <span className="highlight">TECH</span></p>
+          <p className="p3">Elevate Your</p>
+          <p className="p4"> EXPERIENCE</p>
+        </div>
+
+
+        <img src='/111.jpg' alt="Card Image" className="card-image" />
+
       </div>
       <div className="two">
-      <img src ='/all.jpg' alt="Card Image" className="card-image2" />
-      <div className="card-content">
-        <h5 className="card-title">Card Title</h5>
-        <p className="card-description">This is some description text inside the card. You can add more details here.</p>
-      </div>
+        <img src='/all.jpg' alt="Card Image" className="card-image2" />
+        <div className="card-content">
+          <h5 className="card-title">Card Title</h5>
+          <p className="card-description">EXPLORE THE FUTURE</p>
+        </div>
       </div>
     </div>
   );
