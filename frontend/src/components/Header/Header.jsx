@@ -45,9 +45,9 @@ const Header = ({ scrollToProducts }) => {
           <div className="slide" style={{ backgroundImage: `url(${images[0].src})` }}>
             <div className="header-contents">
               <div className="card1">
-                {<TransparentCard/>}
+               {<TransparentCard />}
               </div>
-              <button onClick={scrollToProducts}>View Shop</button>
+             
             </div>
           </div>
           
@@ -55,24 +55,20 @@ const Header = ({ scrollToProducts }) => {
           <div className="slide" style={{ backgroundImage: `url(${images[1].src})` }}>
             <div className="header-contents">
               <div>
-                {<TransparentCard/>}
+               
               </div>
-              <button onClick={scrollToProducts}>Explore More</button>
             </div>
           </div>
 
           {/* Third Image Div */}
           <div className="slide" style={{ backgroundImage: `url(${images[2].src})` }}>
-            <div className="header-contents">
-              <button onClick={scrollToProducts}>Shop Now</button>
+            <div className="header-contents"> 
             </div>
           </div>
           
           {/* Cloned First Image (For Seamless Transition) */}
           <div className="slide" style={{ backgroundImage: `url(${images[0].src})` }}>
-            <div className="header-contents">
-              <h2>{images[0].alt}</h2>
-              <button onClick={scrollToProducts}>View Shop</button>
+            <div className="header-contents">     
             </div>
           </div>
         </div>
