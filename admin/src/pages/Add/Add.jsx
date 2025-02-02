@@ -4,11 +4,11 @@ import { assets } from '../../assets/assets';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import the CSS for react-confirm-alert
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 const Add = () => {
-  const url = "http://localhost:5001"; // Updated URL for API
-  const [images, setImages] = useState([]); // State for multiple images
+  const url = "http://localhost:5001"; 
+  const [images, setImages] = useState([]); 
   const [productId, setProductId] = useState('');
   const [date, setDate] = useState('');
   const [data, setData] = useState({
@@ -20,8 +20,7 @@ const Add = () => {
     category: "", 
     supplierName: ""
   });
-  const [suppliers, setSuppliers] = useState([]); // State for suppliers
-
+  const [suppliers, setSuppliers] = useState([]);
   useEffect(() => {
     const generateProductId = () => {
       const id = 'PROD-' + Math.floor(Math.random() * 1000000);
@@ -32,7 +31,6 @@ const Add = () => {
     const currentDate = new Date().toISOString().split('T')[0];
     setDate(currentDate);
 
-    // Fetch suppliers when the component mounts
     const fetchSuppliers = async () => {
       try {
         const response = await axios.get(`${url}/api/suppliers/getSuppliers`);
@@ -53,7 +51,6 @@ const Add = () => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
-    // Ensure retail price is not less than wholesale price
     if (parseFloat(data.wholesalePrice) > parseFloat(data.retailPrice)) {
       alert('Retail price cannot be less than wholesale price!');
       return;

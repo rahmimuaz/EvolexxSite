@@ -14,11 +14,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Modify to allow multiple image uploads (max 4)
 productRouter.post("/add", upload.array("images", 4), addProduct);
 productRouter.get("/list", listProduct);
 productRouter.post("/remove", removeProduct);
 productRouter.post("/update", updateProduct);
-productRouter.post("/decrease-quantity", decreaseProductQuantity); // For order processing
+productRouter.post("/decrease-quantity", decreaseProductQuantity); 
+
 
 export default productRouter;

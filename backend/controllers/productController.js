@@ -1,6 +1,6 @@
 import productModel from "../models/productModel.js";
 import fs from 'fs';
-import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
+import { v4 as uuidv4 } from 'uuid'; 
 
 // Add product item with multiple images
 const addProduct = async (req, res) => {
@@ -11,7 +11,7 @@ const addProduct = async (req, res) => {
     
     const product = new productModel({
         productId,
-        images: image_filenames, // Store multiple images
+        images: image_filenames, 
         name,
         description,
         category,
@@ -35,7 +35,6 @@ const addProduct = async (req, res) => {
 const listProduct = async (req, res) => {
     try {
         const products = await productModel.find({});
-        // Add base URL to images to make sure the client can access them
         const productsWithImages = products.map(product => {
             const imageUrls = product.images.map(image => `${req.protocol}://${req.get('host')}/images/${image}`);
             return { ...product.toObject(), images: imageUrls };
@@ -118,5 +117,4 @@ const decreaseProductQuantity = async (req, res) => {
     }
 };
 
-// Export functions
 export { addProduct, listProduct, removeProduct, updateProduct, decreaseProductQuantity };

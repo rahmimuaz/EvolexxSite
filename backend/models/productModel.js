@@ -1,9 +1,8 @@
 import mongoose from "mongoose";
 
-// Define the schema for the product
 const productSchema = new mongoose.Schema({
   productId: { type: String, required: true, unique: true },
-  images: { type: [String], required: false }, // Updated to support multiple images
+  images: { type: [String], required: false }, 
   name: { type: String, required: true },
   description: { type: String, required: true },
   category: { type: String, required: true },
@@ -16,7 +15,6 @@ const productSchema = new mongoose.Schema({
   
 });
 
-// Create or get the model for the schema
 const productModel = mongoose.models.product || mongoose.model("product", productSchema);
 
 export default productModel;
