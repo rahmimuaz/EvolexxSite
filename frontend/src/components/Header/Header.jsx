@@ -3,7 +3,7 @@ import "./Header.css";
 import TransparentCard from '../TransparentCard/TransparentCard'
 
 const images = [
-  { src: "/evolexx.jpg", alt: "Apple Products" },
+  { src: "/Accessories.jpg", alt: "Apple Products" },
   { src: "/samsung.jpg", alt: "Samsung Products" },
   { src: "/Accessories.jpg", alt: "Accessories" },
 ];
@@ -16,7 +16,7 @@ const Header = ({ scrollToProducts }) => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
       setIndex((prevIndex) => prevIndex + 1);
-    }, 500000); // Slide every 3 seconds
+    }, 300000); // Slide every 3 seconds
 
     return () => clearInterval(interval);
   }, []);

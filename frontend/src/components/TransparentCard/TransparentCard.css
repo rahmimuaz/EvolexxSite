@@ -1,55 +1,59 @@
 .transparent-card {
-  display: flex; /* Use flexbox to align children side by side */
-  justify-content: space-between; /* Space out the child elements */
-  width: 100%;
+  display: flex; 
+  justify-content: space-between; 
+  width: 98%;
+  margin: 20px;
   position: relative;
-  background: rgba(87, 86, 86, 0.6); /* Transparent background */
+  background: rgba(103, 102, 102, 0.6); 
   overflow: hidden;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(3px);
   padding: 5px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8); 
 }
  
-
-
 .one{
   display: flex;
-  flex-direction: column; /* Stack image and content vertically */
-  width: 30%; /* Adjust the width to make both divs fit side by side */
+  flex-direction: column; 
+  width: 30%; 
 }
 
 .card-image {
-  display: flex; /* Use flexbox to align children side by side */
-  justify-content: space-between; /* Space out the child elements */
+  display: flex; 
+  justify-content: space-between; 
   overflow: hidden;
   position: relative;
-  min-height: 15vh;
-  margin: 10px 10px;
-  width: 100%; /* Make the image take up full width of the card */
+  min-height: 50vh;
+  width: 87%; 
+  margin: 20px 40px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8); 
 } 
 .two {
-  display: flex; /* Use flexbox to align image and content inside each card */
-  flex-direction: column; /* Stack image and content vertically */
-  width: 68%; /* Adjust the width to make both divs fit side by side */
+  display: flex; 
+  flex-direction: column; 
+  width: 68%; 
 }
 
 
 .card-image2{
   width: 98%;
-  display: flex; /* Use flexbox to align children side by side */
-  justify-content: space-between; /* Space out the child elements */
+  display: flex; 
+  justify-content: space-between; 
   overflow: hidden;
-  margin-top: 10px;
-  margin-left: 5px;
+  margin-top: 20px;
   position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 18vh ;
+  max-height: 60vh;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8); 
 
 }
 
@@ -57,69 +61,69 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 30px;
   margin-left: 2vw;
   line-height: 1;
   animation: fadeIn 2s ease-in-out;
 }
 
 .p1, .p2, .p3, .p4 {
-  margin: 0; /* Remove default margin for better control */
-  text-transform: uppercase; /* Make all text uppercase for consistency */
+  margin: 0; 
+  text-transform: uppercase; 
 }
 
-/* First phrase - "Upgrade" */
+
 .p1 {
-  font-size: max(2.5vw, 10px); /* Reduced for more compact look */
+  font-size: max(2.5vw, 10px); 
   font-weight: 700;
   letter-spacing: 1px;
   color: #ffffff;
   animation: slideIn 1s ease-out forwards;
-  opacity: 0; /* Hidden initially */
+  opacity: 0; 
 }
 
-/* Second phrase - "your TECH" */
+
 .p2 {
-  font-size: max(1.8vw, 8px); /* Reduced for more compact look */
+  font-size: max(1.8vw, 8px); 
   font-weight: 700;
   letter-spacing: 0px;
   color: #ffffff;
-  margin-top: 8px; /* Reduced margin */
+  margin-top: 8px;
   opacity: 0;
-  animation: slideIn 1s ease-out 0.5s forwards; /* Slight delay */
+  animation: slideIn 1s ease-out 0.5s forwards; 
 }
 
-/* Third phrase - "Elevate Your" */
+
 .p3 {
-  font-size: max(1.8vw, 10px); /* Smaller font size */
+  font-size: max(1.8vw, 10px); 
   font-weight: 400;
   color: #ffffff;
-  margin-top: 12px; /* Reduced margin */
+  margin-top: 12px; 
   opacity: 0;
-  animation: slideIn 1s ease-out 1s forwards; /* Slight delay */
+  animation: slideIn 1s ease-out 1s forwards; 
 }
 
-/* Last phrase - "EXPERIENCE" */
+
 .p4 {
-  font-size: max(3.5vw, 14px); /* Smaller font size */
+  font-size: max(3.5vw, 14px); 
   font-weight: 200;
   letter-spacing: 2px;
   color: #ffffff;
-  margin-top: 12px; /* Reduced margin */
+  margin-top: 12px;
   opacity: 0;
-  animation: slideIn 1s ease-out 1.5s forwards; /* Slight delay */
+  animation: slideIn 1s ease-out 1.5s forwards; 
 }
 
-/* Highlight text - TECH (Updated to Grey) */
+
 .highlight {
-  font-size: max(2vw, 14px); /* Reduced size for compactness */
+  font-size: max(2vw, 14px); 
   font-weight: 900;
-  color: #808080; /* Grey color */
+  color: #808080; 
   text-transform: uppercase;
   margin-left: 5px;
   animation: highlightGlow 1.5s ease-in-out infinite alternate;
 }
 
-/* Animation for sliding in */
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -131,7 +135,6 @@
   }
 }
 
-/* Animation for the glowing effect on highlighted text */
 @keyframes highlightGlow {
   0% {
     text-shadow: 0 0 10px rgba(128, 128, 128, 0.6), 0 0 20px rgba(128, 128, 128, 0.6); /* Grey glow */
