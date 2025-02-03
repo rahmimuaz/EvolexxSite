@@ -19,6 +19,7 @@ const ProductDisplay = ({ category, products, scrollToProduct }) => {
         <div className='product-display' id='product-display'>
             <hr />
             <h2>{category}</h2>
+
             <div className="product-display-list">
                 {products.length > 0 ? (
                     products.map((item) => (
@@ -28,7 +29,7 @@ const ProductDisplay = ({ category, products, scrollToProduct }) => {
                                 name={item.name}
                                 description={item.description}
                                 price={item.retailPrice}
-                                image={`http://localhost:5001/images/${item.image}`} 
+                                image={`${item.images[0]}`} 
                                 onClick={() => {
                                     handleProductClick(item._id);
                                     scrollToProduct(item._id); 
