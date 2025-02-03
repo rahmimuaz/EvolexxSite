@@ -4,11 +4,11 @@ import { assets } from '../../assets/assets';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import the CSS for react-confirm-alert
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 const Add = () => {
-  const url = "http://localhost:5001"; // Updated URL for API
-  const [image, setImage] = useState(null);
+  const url = "http://localhost:5001"; 
+  const [images, setImages] = useState([]); 
   const [productId, setProductId] = useState('');
   const [date, setDate] = useState('');
   const [data, setData] = useState({
@@ -17,11 +17,10 @@ const Add = () => {
     wholesalePrice: "",
     retailPrice: "",
     quantity: "",
-    category: "",
+    category: "", 
     supplierName: ""
   });
-  const [suppliers, setSuppliers] = useState([]); // State for suppliers
-
+  const [suppliers, setSuppliers] = useState([]);
   useEffect(() => {
     const generateProductId = () => {
       const id = 'PROD-' + Math.floor(Math.random() * 1000000);
@@ -32,7 +31,6 @@ const Add = () => {
     const currentDate = new Date().toISOString().split('T')[0];
     setDate(currentDate);
 
-    // Fetch suppliers when the component mounts
     const fetchSuppliers = async () => {
       try {
         const response = await axios.get(`${url}/api/suppliers/getSuppliers`);
@@ -53,7 +51,6 @@ const Add = () => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
-    // Ensure retail price is not less than wholesale price
     if (parseFloat(data.wholesalePrice) > parseFloat(data.retailPrice)) {
       alert('Retail price cannot be less than wholesale price!');
       return;
@@ -61,7 +58,9 @@ const Add = () => {
 
     const formData = new FormData();
     formData.append("productId", productId);
-    formData.append("image", image);
+    images.forEach((image, index) => {
+      formData.append(`images`, image);
+    });
     formData.append("name", data.name);
     formData.append("description", data.description);
     formData.append("category", data.category);
@@ -83,7 +82,7 @@ const Add = () => {
           category: "",
           supplierName: ""
         });
-        setImage(null);
+        setImages([]);
         setProductId('');
         setDate('');
 
@@ -106,14 +105,19 @@ const Add = () => {
   };
 
   const handleImageChange = (event) => {
-    setImage(event.target.files[0]);
+    const selectedFiles = Array.from(event.target.files);
+    if (selectedFiles.length > 4) {
+      alert('You can upload a maximum of 4 images.');
+      return;
+    }
+    setImages(selectedFiles);
   };
 
   return (
     <div className="dashboard">
       <div className="PrdAddSidebar">
         <ul className="sidebar-list">
-        <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li>
+          <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li>
           <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
           <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
           <li className="sidebar-item"><Link to="/orders">Orders</Link></li>
@@ -132,11 +136,19 @@ const Add = () => {
           </div>
 
           <div className="add-img-upload flex-col">
-            <p>Upload Image</p>
-            <label htmlFor="image"> 
-              <img src={image ? URL.createObjectURL(image) : assets.upload_area} alt="" />
+            <p>Upload Images (Max 4)</p>
+            <label htmlFor="image">
+              <div className="image-preview-container">
+                {images.length > 0 ? (
+                  images.map((img, index) => (
+                    <img key={index} src={URL.createObjectURL(img)} alt={`preview-${index}`} className="image-preview" />
+                  ))
+                ) : (
+                  <img src={assets.upload_area} alt="upload-area" />
+                )}
+              </div>
             </label>
-            <input onChange={handleImageChange} type="file" id="image" hidden />
+            <input onChange={handleImageChange} type="file" id="image" multiple hidden />
           </div>
 
           <div className="add-product-name flex-col">
@@ -158,7 +170,6 @@ const Add = () => {
                 <option value="Pre Owned"> Pre Owned</option>
                 <option value="Accessories">Accessories</option>
                 <option value="Build">Build</option>
-                
               </select>
             </div>
 

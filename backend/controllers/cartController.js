@@ -5,7 +5,7 @@ import userModel from "../models/userModel.js";
 const addToCart = async (req, res) => {
     try {
         let userData = await userModel.findById(req.body.userId);
-        let cartData = userData.cartData || {}; // Use existing cartData or initialize an empty object
+        let cartData = userData.cartData || {}; 
 
         // Create a unique key for the item based on its ID and size
         const itemKey = `${req.body.itemId}-${req.body.size}`;
@@ -13,9 +13,9 @@ const addToCart = async (req, res) => {
         if (!cartData[itemKey]) {
             // If the item doesn't exist in the cart, add it
             cartData[itemKey] = {
-                name: req.body.name, // Add name from request
-                size: req.body.size, // Add size from request
-                quantity: 1, // Initialize quantity
+                name: req.body.name, 
+                size: req.body.size, 
+                quantity: 1,
             };
         } else {
             // If it already exists, increase the quantity
@@ -59,7 +59,6 @@ const removeFromCart = async (req, res) => {
     }
 };
 
-// Fetch user cart data
 // Fetch user cart data
 const getCart = async (req, res) => {
     try {

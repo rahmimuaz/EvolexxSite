@@ -1,14 +1,13 @@
 import mongoose from "mongoose";
 
-// Define the schema for the product
 const productSchema = new mongoose.Schema({
   productId: { type: String, required: true, unique: true },
-  image: { type: String, required: false }, 
+  images: { type: [String], required: false }, 
   name: { type: String, required: true },
   description: { type: String, required: true },
   category: { type: String, required: true },
-  wholesalePrice: { type: Number, required: true },  // Wholesale price
-  retailPrice: { type: Number, required: true },  // Retail price
+  wholesalePrice: { type: Number, required: true },  
+  retailPrice: { type: Number, required: true },  
   quantity: { type: Number, required: true },
   supplierName: { type: String, required: true },
   date: { type: Date, default: Date.now },
@@ -16,8 +15,6 @@ const productSchema = new mongoose.Schema({
   
 });
 
-
-// Create or get the model for the schema
 const productModel = mongoose.models.product || mongoose.model("product", productSchema);
 
 export default productModel;
