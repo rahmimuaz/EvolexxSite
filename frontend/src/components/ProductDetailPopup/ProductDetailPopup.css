@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,20 +13,20 @@
 
 .product-detail-container {
     background-color: white;
-    padding: 20px;
-    width: 80%;
+    padding: 30px;
+    width: 100%;
     max-width: 800px;
     border-radius: 20px;
     display: flex;
     flex-direction: row;
     gap: 20px;
     position: relative;
-    color: #6a6767;
+    color: #6a6767; 
 }
 
 .close-btn {
     position: absolute;
-    top: 10px;
+    top: 5px;
     right: 20px;
     font-size: 30px;
     color: #333;
@@ -34,7 +34,8 @@
 }
 
 .product-detail-left {
-    flex: 1;
+    flex: 1.5;
+    position: relative;
 }
 
 .product-detail-right {
@@ -46,6 +47,39 @@
     max-width: 300px;
     height: auto;
     border-radius: 5px;
+}
+
+.image-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 20%;
+    transition: background-color 0.3s;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .product-info-small {
@@ -98,7 +132,6 @@
     margin-right: 5px;
 }
 
-/* Quantity Selector */
 .quantity-selection {
     margin: 20px 0;
 }

@@ -15,14 +15,13 @@ const Cart = () => {
         <div className="cart-items-title">
           <p>Items</p>
           <p>Title</p>
-          <p>Size</p>
           <p>Price</p>
           <p>Quantity</p>
           <p>Total</p>
           <p>Add</p>
           <p>Remove</p>
         </div>
-        <br />
+        <br /> 
         <hr />
         
         {Object.keys(cartItems).length > 0 ? (
@@ -36,7 +35,6 @@ const Cart = () => {
                   <div className="cart-items-title cart-items-item">
                     <img src={product.images[0]} alt={product.name} /> 
                     <p>{product.name}</p>
-                    <p>{size}</p> {/* Show the selected size */}
                     <p>Rs.{product.retailPrice}</p>
                     <p>{cartItem.quantity}</p>
                     <p>Rs.{product.retailPrice * cartItem.quantity}</p>

@@ -1,12 +1,11 @@
 .cart {
     width: 90%;
-    margin: auto;
-    margin-top: 100px;
+    margin: 100px 150px;
 }
 
 .cart-items-title {
     display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr 0.5fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     color: grey;
     font-size: max(1vw, 12px);
@@ -24,7 +23,7 @@
 .cart hr {
     height: 1px;
     background-color: #e2e2e2; 
-    border: none;
+    border: none; 
     margin: 10px 0; 
 }
 
@@ -80,7 +79,7 @@
     }
 
     .cart-items-title {
-        grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.8fr 0.8fr;
+        grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
         font-size: 14px;
     }
 
