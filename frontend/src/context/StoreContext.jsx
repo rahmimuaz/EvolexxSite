@@ -4,33 +4,44 @@ import axios from "axios";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-    const [cartItems, setCartItems] = useState({});
+    // Load cart from localStorage when initializing state
+    const [cartItems, setCartItems] = useState(() => {
+        const savedCart = localStorage.getItem("cartItems");
+        return savedCart ? JSON.parse(savedCart) : {};
+    });
+
     const [featuredProducts, setFeaturedProducts] = useState([]);
-    const [token, setToken] = useState("");
+    const [token, setToken] = useState(localStorage.getItem("token") || "");
     const [userId, setUserId] = useState("");
-    
+
     const url = "http://localhost:5001"; // Replace with your actual backend URL
 
+    // Save cart data to localStorage whenever cartItems change
+    useEffect(() => {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }, [cartItems]);
 
-    
     // Add item to cart
     const addToCart = async (itemId, size, productName) => {
         setCartItems((prev) => {
             const updatedCart = { ...prev };
-            if (!updatedCart[itemId]) {
-                updatedCart[itemId] = { name: productName, size, quantity: 1 };
+            const itemKey = `${itemId}-${size}`;
+
+            if (!updatedCart[itemKey]) {
+                updatedCart[itemKey] = { name: productName, size, quantity: 1 };
             } else {
-                updatedCart[itemId].quantity += 1;
+                updatedCart[itemKey].quantity += 1;
             }
+
             return updatedCart;
         });
 
         if (token) {
             try {
                 await axios.post(
-                    `${url}/api/cart/add`, 
+                    `${url}/api/cart/add`,
                     { itemId, size, name: productName },
-                    { headers: { Authorization: `Bearer ${token}` } } // Include Bearer prefix if needed
+                    { headers: { Authorization: `Bearer ${token}` } }
                 );
             } catch (error) {
                 console.error("Error adding item to cart:", error);
@@ -38,20 +49,17 @@ const StoreContextProvider = (props) => {
         }
     };
 
-    const clearCart = () => {
-        // Logic to clear the cart, e.g., resetting state or local storage
-        localStorage.removeItem("cartItems"); // Example for clearing local storage
-    };
-    
     // Remove item from cart
-    const removeFromCart = async (itemId) => {
+    const removeFromCart = async (itemId, size) => {
         setCartItems((prev) => {
             const updatedCart = { ...prev };
-            if (updatedCart[itemId]) {
-                if (updatedCart[itemId].quantity > 1) {
-                    updatedCart[itemId].quantity -= 1;
+            const itemKey = `${itemId}-${size}`;
+
+            if (updatedCart[itemKey]) {
+                if (updatedCart[itemKey].quantity > 1) {
+                    updatedCart[itemKey].quantity -= 1;
                 } else {
-                    delete updatedCart[itemId];
+                    delete updatedCart[itemKey];
                 }
             }
             return updatedCart;
@@ -59,41 +67,57 @@ const StoreContextProvider = (props) => {
 
         if (token) {
             try {
-                await axios.post(`${url}/api/cart/remove`, { itemId }, { headers: { token } });
+                await axios.post(
+                    `${url}/api/cart/remove`,
+                    { itemId, size },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
             } catch (error) {
                 console.error("Error removing item from cart:", error);
             }
         }
     };
 
+    // Clear the cart (both in state and localStorage)
+    const clearCart = () => {
+        setCartItems({});
+        localStorage.removeItem("cartItems");
+    };
+
     // Fetch the product list from the API
     const fetchProductList = async () => {
         try {
             const response = await axios.get(`${url}/api/product/list`);
-            setFeaturedProducts(response.data.data); // Assuming your API returns products in data.data
+            setFeaturedProducts(response.data.data);
         } catch (error) {
             console.error("Error fetching product list:", error);
         }
     };
 
-    // Load cart data for the user and extract user ID from the response
+    // Load cart data from API and extract user ID
     const loadCartData = async (token) => {
         try {
-            const response = await axios.post(`${url}/api/cart/get`, {}, { headers: { Authorization: `Bearer ${token}` } });
+            const response = await axios.post(
+                `${url}/api/cart/get`,
+                {},
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+
             setCartItems(response.data.cartData);
-            const userIdFromResponse = response.data.userId; // Assuming your API response includes the userId
-            setUserId(userIdFromResponse); // Set user ID from the response
+            localStorage.setItem("cartItems", JSON.stringify(response.data.cartData));
+
+            const userIdFromResponse = response.data.userId;
+            setUserId(userIdFromResponse);
         } catch (error) {
             console.error("Error loading cart data:", error);
         }
     };
-    
 
-    // Get the total cart amount
+    // Get total cart amount
     const getTotalCartAmount = () => {
-        return Object.keys(cartItems).reduce((total, itemId) => {
-            const { quantity } = cartItems[itemId];
-            const product = featuredProducts.find((product) => product._id === itemId);
+        return Object.keys(cartItems).reduce((total, itemKey) => {
+            const { quantity } = cartItems[itemKey];
+            const product = featuredProducts.find((product) => product._id === itemKey.split("-")[0]);
 
             if (product) {
                 return total + product.retailPrice * quantity;
@@ -102,54 +126,34 @@ const StoreContextProvider = (props) => {
         }, 0);
     };
 
-
-    //getting orders placed by the particular user who is logged in 
-  
+    // Fetch orders placed by the logged-in user
     const fetchUserOrders = async () => {
-        if (!token) return; 
-    
+        if (!token) return [];
+
         try {
             console.log("Fetching user orders...");
             const response = await axios.get(`${url}/api/orders`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-    
-            console.log("Response:", response); // Log the full response for debugging
+
             console.log("Orders fetched:", response.data.orders);
             return response.data.orders;
         } catch (error) {
             console.error("Error fetching user orders:", error.response ? error.response.data : error.message);
-            return []; // Return an empty array on error
+            return [];
         }
     };
-    
-    
 
-
-    // Load the token, userId, and cart data when the component mounts
+    // Load token, userId, and cart data when the component mounts
     useEffect(() => {
         async function loadData() {
-            const savedToken = localStorage.getItem("token");
-            if (savedToken) {
-                setToken(savedToken);
-                await loadCartData(savedToken); // Load cart data for the user
+            if (token) {
+                await loadCartData(token);
             }
-
-            await fetchProductList(); // Fetch the product list
+            await fetchProductList();
         }
         loadData();
-    }, []);
-
-    // Log the cart items whenever they change (for debugging)
-    useEffect(() => {
-        console.log("Updated cart items:", cartItems);
-    }, [cartItems]);
-
-    // Log the current total amount whenever the cart items change
-    useEffect(() => {
-        const total = getTotalCartAmount();
-        console.log("Current total amount:", total);
-    }, [cartItems]);
+    }, [token]);
 
     const contextValue = {
         cartItems,
@@ -160,18 +164,13 @@ const StoreContextProvider = (props) => {
         url,
         token,
         setToken,
-        userId, // Make sure userId is correctly passed in the context
+        userId,
         featuredProducts,
         clearCart,
         getTotalCartAmount,
     };
 
-    
-    return (
-        <StoreContext.Provider value={contextValue}>
-            {props.children}
-        </StoreContext.Provider>
-    );
+    return <StoreContext.Provider value={contextValue}>{props.children}</StoreContext.Provider>;
 };
 
 export default StoreContextProvider;

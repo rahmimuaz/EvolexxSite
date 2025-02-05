@@ -15,6 +15,7 @@ const Cart = () => {
         <div className="cart-items-title">
           <p>Items</p>
           <p>Title</p>
+          <p>Size</p>
           <p>Price</p>
           <p>Quantity</p>
           <p>Total</p>
@@ -25,20 +26,22 @@ const Cart = () => {
         <hr />
         
         {Object.keys(cartItems).length > 0 ? (
-          Object.keys(cartItems).map((itemId, index) => {
-            const product = featuredProducts.find((item) => item._id === itemId); // Find product by _id
-            const cartItem = cartItems[itemId]; // Access the specific cart item (including quantity and size)
+          Object.entries(cartItems).map(([itemKey, cartItem], index) => {
+            const [itemId, size] = itemKey.split("-"); // Extract itemId and size
+            const product = featuredProducts.find((item) => item._id === itemId); // Find product
+
             if (product) {
               return (
                 <div key={index}>
                   <div className="cart-items-title cart-items-item">
-                    <img src={`${product.images[0]}`} alt={product.name} /> {/* Update image source */}
+                    <img src={product.images[0]} alt={product.name} /> 
                     <p>{product.name}</p>
+                    <p>{size}</p> {/* Show the selected size */}
                     <p>Rs.{product.retailPrice}</p>
-                    <p>{cartItem.quantity}</p> {/* Display quantity correctly */}
-                    <p>Rs.{product.retailPrice * cartItem.quantity}</p> {/* Calculate total based on quantity */}
-                    <p onClick={() => addToCart(itemId)} className='add'>+</p>
-                    <p onClick={() => removeFromCart(itemId)} className='cross'>x</p>
+                    <p>{cartItem.quantity}</p>
+                    <p>Rs.{product.retailPrice * cartItem.quantity}</p>
+                    <p onClick={() => addToCart(itemId, size, product.name)} className='add'>+</p>
+                    <p onClick={() => removeFromCart(itemId, size)} className='cross'>x</p>
                   </div>
                   <hr />
                 </div>
