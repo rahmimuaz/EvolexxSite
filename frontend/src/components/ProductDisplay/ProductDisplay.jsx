@@ -3,12 +3,19 @@ import './ProductDisplay.css';
 import ProductItem from '../ProductItem/ProductItem';
 import ProductDetailPopup from '../ProductDetailPopup/ProductDetailPopup';
 
-const ProductDisplay = ({ category, products, scrollToProduct }) => { 
+const ProductDisplay = ({ category, products, scrollToProduct = () => {} }) => { 
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     const handleProductClick = (id) => {
         const product = products.find(p => p._id === id);
         setSelectedProduct(product);
+
+        // Check if scrollToProduct is a function before calling it
+        if (typeof scrollToProduct === 'function') {
+            scrollToProduct(id);
+        } else {
+            console.warn('scrollToProduct is not a function');
+        }
     };
 
     const handleClosePopup = () => {
@@ -29,11 +36,8 @@ const ProductDisplay = ({ category, products, scrollToProduct }) => {
                                 name={item.name}
                                 description={item.description}
                                 price={item.retailPrice}
-                                image={`${item.images[0]}`} 
-                                onClick={() => {
-                                    handleProductClick(item._id);
-                                    scrollToProduct(item._id); 
-                                }}
+                                image={item.images?.[0] || 'default-image.jpg'}
+                                onClick={() => handleProductClick(item._id)}
                             /> 
                         </div>
                     ))
@@ -41,6 +45,7 @@ const ProductDisplay = ({ category, products, scrollToProduct }) => {
                     <p>No products available in this category.</p>
                 )}
             </div>
+
             {selectedProduct && (
                 <ProductDetailPopup 
                     product={selectedProduct}
