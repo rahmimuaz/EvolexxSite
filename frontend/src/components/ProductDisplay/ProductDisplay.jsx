@@ -34,7 +34,7 @@ const ProductDisplay = ({ category, products, scrollToProduct }) => {
                                     handleProductClick(item._id);
                                     scrollToProduct(item._id); 
                                 }}
-                            />
+                            /> 
                         </div>
                     ))
                 ) : (

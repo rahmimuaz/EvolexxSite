@@ -32,7 +32,7 @@ const Cart = () => {
               return (
                 <div key={index}>
                   <div className="cart-items-title cart-items-item">
-                    <img src={`http://localhost:5001/images/${product.image}`} alt={product.name} />
+                    <img src={`${product.images[0]}`} alt={product.name} /> {/* Update image source */}
                     <p>{product.name}</p>
                     <p>Rs.{product.retailPrice}</p>
                     <p>{cartItem.quantity}</p> {/* Display quantity correctly */}
