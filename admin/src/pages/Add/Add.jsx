@@ -14,6 +14,7 @@ const Add = () => {
   const [data, setData] = useState({
     name: "",
     description: "",
+    specificDescription: "",  // Add specificDescription state
     wholesalePrice: "",
     retailPrice: "",
     quantity: "",
@@ -21,6 +22,7 @@ const Add = () => {
     supplierName: ""
   });
   const [suppliers, setSuppliers] = useState([]);
+
   useEffect(() => {
     const generateProductId = () => {
       const id = 'PROD-' + Math.floor(Math.random() * 1000000);
@@ -63,6 +65,7 @@ const Add = () => {
     });
     formData.append("name", data.name);
     formData.append("description", data.description);
+    formData.append("specificDescription", data.specificDescription); // Add specificDescription to the formData
     formData.append("category", data.category);
     formData.append("wholesalePrice", data.wholesalePrice);
     formData.append("retailPrice", data.retailPrice);
@@ -76,6 +79,7 @@ const Add = () => {
         setData({
           name: "",
           description: "",
+          specificDescription: "", // Reset specificDescription state
           wholesalePrice: "",
           retailPrice: "",
           quantity: "",
@@ -161,6 +165,18 @@ const Add = () => {
             <textarea name="description" rows="6" placeholder='Write content here' value={data.description} onChange={onChangeHandler}></textarea>
           </div>
 
+          {/* Add Specific Description field */}
+          <div className="add-product-specific-description flex-col">
+            <p>Specific Description</p>
+            <textarea
+              name="specificDescription"
+              rows="6"
+              placeholder="Enter specific details here"
+              value={data.specificDescription}
+              onChange={onChangeHandler}
+            />
+          </div>
+
           <div className="add-category-price-quantity">
             <div className="add-category flex-col">
               <p>Product Category</p>
@@ -209,4 +225,3 @@ const Add = () => {
 };
 
 export default Add;
- 

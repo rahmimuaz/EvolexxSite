@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 const addProduct = async (req, res) => {
     let image_filenames = req.files ? req.files.map(file => file.filename) : []; 
 
-    const { name, description, category, wholesalePrice, retailPrice, quantity, supplierName } = req.body;
+    const { name, description, specificDescription, category, wholesalePrice, retailPrice, quantity, supplierName } = req.body;
     const productId = `PROD-${uuidv4()}`;
     
     const product = new productModel({
@@ -14,6 +14,7 @@ const addProduct = async (req, res) => {
         images: image_filenames, 
         name,
         description,
+        specificDescription, // ✅ Added specific description
         category,
         wholesalePrice,
         retailPrice,
@@ -46,7 +47,6 @@ const listProduct = async (req, res) => {
     }
 };
 
-
 // Remove product and delete images
 const removeProduct = async (req, res) => {
     try {
@@ -74,9 +74,10 @@ const removeProduct = async (req, res) => {
 // Update product details (excluding images)
 const updateProduct = async (req, res) => {
     try {
-        const { id, name, category, wholesalePrice, retailPrice, quantity } = req.body;
+        const { id, name, specificDescription, category, wholesalePrice, retailPrice, quantity } = req.body;
         const updatedProduct = await productModel.findByIdAndUpdate(id, { 
             name, 
+            specificDescription, // ✅ Added specific description to update
             category, 
             wholesalePrice, 
             retailPrice, 
