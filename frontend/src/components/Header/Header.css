@@ -1,4 +1,3 @@
-/* Base Styles */
 .header {
     margin-top: 20px;
     width: 100%;
@@ -32,7 +31,6 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Header Content */
 .header-contents {
     width: 100%;
     text-align: center;
@@ -62,12 +60,10 @@
     align-items: center;
 }
 
-/* ✅ Responsive Styles */
 
-/* Large screens (Desktops & Laptops) */
 @media (max-width: 1366px) {
     .slide {
-        min-height: 45vh; /* Adjust slide height */
+        min-height: 45vh; 
     }
 
     .header-contents button {
@@ -76,15 +72,15 @@
     }
 }
 
-/* Medium screens (Tablets & Smaller Laptops) */
+
 @media (max-width: 1024px) {
     .slider {
         flex-direction: row;
-        min-height: 40vh; /* Reduce slide height */
+        min-height: 40vh;
     }
 
     .slide {
-        min-height: 40vh; /* Reduce slide height */
+        min-height: 40vh; 
         border-radius: 20px;
     }
 
@@ -104,7 +100,6 @@
     }
 }
 
-/* Small screens (Mobile Devices) */
 @media (max-width: 768px) {
     .slider-container {
         overflow: hidden;
@@ -113,12 +108,12 @@
         border-radius: 20px;
     }
     .slider {
-        flex-direction: column; /* Stack slides vertically */
+        flex-direction: column; 
         
     }
 
     .slide {
-        min-height: 35vh; /* Reduce height */
+        min-height: 35vh; 
         border-radius: 15px;
         margin-bottom: 30px;
     }
@@ -134,12 +129,12 @@
     }
 
     .card1 {
-        flex-direction: column; /* Stack cards vertically */
+        flex-direction: column; 
         text-align: center;
     }
 }
 
-/* Extra Small screens (Mobile under 480px) */
+
 @media (max-width: 480px) {
     .slider-container {
         overflow: hidden;
@@ -150,7 +145,7 @@
    
 
     .header-contents {
-        font-size: 12px; /* Smaller text */
+        font-size: 12px; 
     }
 
     .header-contents button {

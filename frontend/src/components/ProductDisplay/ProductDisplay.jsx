@@ -10,7 +10,6 @@ const ProductDisplay = ({ category, products, scrollToProduct = () => {} }) => {
         const product = products.find(p => p._id === id);
         setSelectedProduct(product);
 
-        // Check if scrollToProduct is a function before calling it
         if (typeof scrollToProduct === 'function') {
             scrollToProduct(id);
         } else {

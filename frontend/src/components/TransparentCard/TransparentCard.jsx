@@ -1,5 +1,5 @@
 import React from "react";
-import "./TransparentCard.css"; // Link to the CSS file for styles
+import "./TransparentCard.css";
 
 const TransparentCard = () => {
   return (

@@ -16,8 +16,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
   const [isSearching, setIsSearching] = useState(false);
   const { getTotalCartAmount } = useContext(StoreContext);
   const [isListening, setIsListening] = useState(false);
-  const [isMenuVisible, setIsMenuVisible] = useState(false); // For mobile menu toggle
-
+  const [isMenuVisible, setIsMenuVisible] = useState(false); 
   const logout = () => {
     setToken(null);
     localStorage.removeItem("token");  
@@ -46,7 +45,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
     if (isListening) {
       recognition.stop();
       setIsListening(false);
-      setSearchQuery(""); // Clear the search query
+      setSearchQuery(""); 
     } else {
       recognition.start();
       setIsListening(true);
@@ -79,19 +78,17 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
   };
 
   const handleCloseMenu = () => {
-    setIsMenuVisible(false); // Close menu when the close button is clicked
+    setIsMenuVisible(false); 
   };
 
   return (
     <div className='navbar'>
       <img src='./logo.png' alt="" />
 
-      {/* Menu Toggle for Mobile */}
       <button className="menu-toggle" onClick={handleMenuToggle}>
         ☰
       </button>
 
-      {/* Navbar Menu */}
       <ul className={`navbar-menu ${isMenuVisible ? 'show' : ''}`}>
         {/* Close Button for Mobile */}
         <button className="menu-close" onClick={handleCloseMenu}>
@@ -102,7 +99,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           <li
             onClick={() => {
               setMenu("Home");
-              handleCloseMenu(); // Close the menu after setting the active menu item
+              handleCloseMenu(); 
             }}
             className={menu === "Home" ? "active" : ""}
           >
@@ -113,7 +110,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           <li
             onClick={() => {
               setMenu("card");
-              handleCloseMenu(); // Close the menu after setting the active menu item
+              handleCloseMenu(); 
             }}
             className={menu === "card" ? "active" : ""}
           >
@@ -124,7 +121,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           <li
             onClick={() => {
               setMenu("Contact Us");
-              handleCloseMenu(); // Close the menu after setting the active menu item
+              handleCloseMenu(); 
             }}
             className={menu === "Contact Us" ? "active" : ""}
           >
@@ -132,7 +129,6 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           </li>
         </Link>
 
-        {/* Right Side Content Inside the Menu for Mobile */}
         <div className='navbar-right'>
           <img
             src={assets.search_icon}
@@ -156,7 +152,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
                 <ul>
                   {filteredProducts.map(product => (
                     <li key={product._id} className='search-result-item' onClick={() => {
-                      scrollToProduct(product._id); // Use scrollToProduct to scroll to the product
+                      scrollToProduct(product._id); 
                     }}>
                       <img src={`http://localhost:5001/images/${product.image}`} alt={product.name} className='search-result-image' />
                       <div>

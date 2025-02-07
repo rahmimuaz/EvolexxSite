@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import logo from '../../assets/logo_footer.png'; // Adjust the path if necessary
+import logo from '../../assets/logo_footer.png'; 
 import facebookIcon from '../../assets/facebook_icon.png';
 import twitterIcon from '../../assets/twitter_icon.png';
 import linkedinIcon from '../../assets/linkedin_icon.png';
@@ -15,7 +15,6 @@ const Footer = () => {
                     <img src={logo} alt="Company Logo" className="footer-logo" />
                     <p>Your trusted destination for quality building materials, tools, and gardening supplies. Established in 2012, </p>
                     
-                    {/* Social Media Icons Section */}
                     <div className="social-media-icons">
                         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                             <img src={facebookIcon} alt="Facebook" className="social-icon" />

@@ -4,15 +4,15 @@
     color: #989494;
     display: flex;
     flex-direction: column;
-    padding: 0px 8vw; /* Adjust if needed */
+    padding: 0px 8vw;
     gap: 20px;
     padding-top: 40px;
 }
 
 .footer-container {
     display: flex;
-    justify-content: space-between; /* Space between sections */
-    align-items: flex-start; /* Align items to the top */
+    justify-content: space-between; 
+    align-items: flex-start; 
     flex-wrap: wrap;
 }
 .ifooter-section h6{
@@ -26,18 +26,18 @@
     min-width: 200px;
 }
 
-/* Ensure text in sections is left-aligned */
+
 .footer .ifooter-section.description p,
 .footer .ifooter-section.contact p,
 .footer .ifooter-bottom p {
     background-color: #fafafc;
-    color: #515151; /* Ensure text is white */
+    color: #515151;
     font-size: 14px;
 }
 
 .footer .ifooter-section.description p,
 .footer .ifooter-section.contact p {
-    text-align: left; /* Left align the text in sections */
+    text-align: left; 
 
 }
 
@@ -59,7 +59,7 @@
 }
 
 .ifooter-section ul li a {
-    color: #515151; /* All text is white */
+    color: #515151;
     text-decoration: none;
 }
 
@@ -67,22 +67,22 @@
     text-decoration: underline;
 }
 
-/* Optional: Ensure sections maintain left alignment */
+
 .ifooter-section {
-    text-align: left; /* Apply left alignment to all sections */
+    text-align: left; 
 }
 
 .social-media-icons {
-    margin-top: 10px; /* Add space above the icons */
+    margin-top: 10px; 
 }
 
 .social-icon {
-    width: 30px; /* Adjust the width of icons */
-    height: auto; /* Keep aspect ratio */
-    margin: 0 10px; /* Space between icons */
-    transition: transform 0.3s; /* Smooth effect on hover */
+    width: 30px; 
+    height: auto;
+    margin: 0 10px;
+    transition: transform 0.3s; 
 }
 
 .social-icon:hover {
-    transform: scale(1.1); /* Scale up icon on hover */
+    transform: scale(1.1); 
 }

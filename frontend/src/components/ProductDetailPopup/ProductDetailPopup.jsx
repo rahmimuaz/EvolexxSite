@@ -12,22 +12,18 @@ const ProductDetailPopup = ({ product, onClose }) => {
 
     if (!product) return null;
 
-    // Ensure product.images is an array
     const images = Array.isArray(product.images) ? product.images : [product.images];
 
-    // Update price logic if needed
     useEffect(() => {
         setUpdatedPrice(product.retailPrice);
     }, [product.retailPrice]);
 
-    // Handle Add to Cart
     const handleAddToCart = () => {
         const newAddedQuantity = addedQuantity + 1;
         setAddedQuantity(newAddedQuantity);
         addToCart(product._id, newAddedQuantity);
     };
 
-    // Image navigation functions
     const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % images.length);
     const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
 
@@ -62,7 +58,6 @@ const ProductDetailPopup = ({ product, onClose }) => {
                         <p>Category: {product.category}</p>
                     </div>
 
-                    {/* Out of Stock Message */}
                     {product.quantity === 0 ? (
                         <p className="out-of-stock-message">Out of Stock</p>
                     ) : (

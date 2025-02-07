@@ -16,18 +16,17 @@ const Header = ({ scrollToProducts }) => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
       setIndex((prevIndex) => prevIndex + 1);
-    }, 1000000); // Slide every 3 seconds
+    }, 1000000);
 
     return () => clearInterval(interval);
   }, []);
 
-  // Reset index instantly when reaching the cloned first slide
   useEffect(() => {
     if (index === images.length) {
       setTimeout(() => {
         setIsTransitioning(false);
         setIndex(0);
-      }, 1000); // Wait for transition to finish before resetting
+      }, 1000); 
     }
   }, [index]);
 
@@ -41,7 +40,6 @@ const Header = ({ scrollToProducts }) => {
             transition: isTransitioning ? "transform 1s ease-in-out" : "none",
           }}
         >
-          {/* First Image Div */}
           <div className="slide" style={{ backgroundImage: `url(${images[0].src})` }}>
             <div className="header-contents">
               <div className="card1">
@@ -51,7 +49,6 @@ const Header = ({ scrollToProducts }) => {
             </div>
           </div>
 
-          {/* Second Image Div */}
           <div className="slide" style={{ backgroundImage: `url(${images[1].src})` }}>
             <div className="header-contents">
               <div>
@@ -60,13 +57,11 @@ const Header = ({ scrollToProducts }) => {
             </div>
           </div>
 
-          {/* Third Image Div */}
           <div className="slide" style={{ backgroundImage: `url(${images[2].src})` }}>
             <div className="header-contents">
             </div>
           </div>
 
-          {/* Cloned First Image (For Seamless Transition) */}
           <div className="slide" style={{ backgroundImage: `url(${images[0].src})` }}>
             <div className="header-contents">
             </div>

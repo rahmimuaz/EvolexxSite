@@ -4,9 +4,9 @@
   }
   
   
-  /* Mobile-specific menu button */
+
   .menu-button {
-    display: none; /* Hidden by default */
+    display: none; 
     font-size: 16px;
     background-color: transparent;
     border: none;
@@ -15,11 +15,10 @@
     padding: 10px;
   }
   
-  /* Explore menu layout (Always visible on larger screens) */
   .explore-menu {
     width: 100%;
     display: flex;
-    flex-direction: row; /* Horizontal layout on larger screens */
+    flex-direction: row; 
     gap: 50px;
 
     justify-content: center;
@@ -30,7 +29,7 @@
   
   .explore-menu-list {
     display: flex;
-    flex-direction: row; /* Horizontal layout on larger screens */
+    flex-direction: row; 
     gap: 170px;
     text-align: center;
 
@@ -59,51 +58,51 @@
     display: none;
   }
   
-  /* Mobile-specific styles */
+
   @media (max-width: 768px) {
     .menu-button {
-      display: block; /* Show the menu button on mobile */
+      display: block; 
     }
   
     .explore-menu {
-      display: none; /* Hide the menu by default on mobile */
-      flex-direction: column; /* Stack vertically on mobile */
+      display: none;
+      flex-direction: column; 
       gap: 10px;
     }
   
     .explore-menu.visible {
-      display: flex; /* Show the menu when it's toggled */
+      display: flex; 
     }
   
     .explore-menu-list {
       display: flex;
-      flex-direction: column; /* Stack vertically on mobile */
+      flex-direction: column; 
       gap: 10px;
     }
   }
   
 
-  @media (max-width: 1366px) { /* Large laptops */
+  @media (max-width: 1366px) { 
     .explore-menu-container {
       margin-top: 5px;
       position: relative;
     }
 
     .explore-menu-list {
-        gap: 120px; /* Reduce gap between menu items */
+        gap: 120px; 
     }
 
     .explore-menu-list-item p {
-        font-size: 18px; /* Slightly increase text size */
+        font-size: 18px; 
     }
 }
 
-@media (max-width: 1024px) { /* Smaller laptops */
+@media (max-width: 1024px) { 
     .explore-menu-list {
-        gap: 0px; /* Adjust spacing for smaller screens */
+        gap: 0px; 
     }
 
     .explore-menu-list-item p {
-        font-size: 16px; /* Keep text readable */
+        font-size: 16px; 
     }
 }
