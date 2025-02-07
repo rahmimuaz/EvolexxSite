@@ -1,4 +1,5 @@
 .explore-menu-container {
+    margin-top: 40px;
     position: relative;
   }
   
@@ -47,11 +48,11 @@
   }
   
   .explore-menu-list-item.active p {
-    color: #009688;
+    color: rgb(0, 0, 0);
   }
   
   .explore-menu-list-item:hover p {
-    color: #009688;
+    color: #000000;
   }
   
   .explore-menu-list::-webkit-scrollbar {
@@ -81,3 +82,28 @@
     }
   }
   
+
+  @media (max-width: 1366px) { /* Large laptops */
+    .explore-menu-container {
+      margin-top: 5px;
+      position: relative;
+    }
+
+    .explore-menu-list {
+        gap: 120px; /* Reduce gap between menu items */
+    }
+
+    .explore-menu-list-item p {
+        font-size: 18px; /* Slightly increase text size */
+    }
+}
+
+@media (max-width: 1024px) { /* Smaller laptops */
+    .explore-menu-list {
+        gap: 0px; /* Adjust spacing for smaller screens */
+    }
+
+    .explore-menu-list-item p {
+        font-size: 16px; /* Keep text readable */
+    }
+}

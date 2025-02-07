@@ -1,4 +1,4 @@
-
+/* Base Styles */
 .header {
     margin-top: 20px;
     width: 100%;
@@ -7,18 +7,16 @@
     padding: 10px;
 }
 
-
 .slider-container {
     overflow: hidden;
-    width: 100%;  
+    width: 100%;
 }
 
 .slider {
     display: flex;
-    width: 100%; 
+    width: 100%;
     transition: transform 1s ease-in-out;
 }
-
 
 .slide {
     width: 100%;
@@ -29,19 +27,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 50vh; 
+    min-height: 50vh;
     border-radius: 30px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-
-
+/* Header Content */
 .header-contents {
     width: 100%;
     text-align: center;
     color: white;
     padding: 10px;
-
 }
 
 .header-contents button {
@@ -59,8 +55,111 @@
     background-color: #f0f0f0;
     color: #333;
 }
- .card1{
+
+.card1 {
     display: flex;
     justify-content: center;
     align-items: center;
- }
+}
+
+/* ✅ Responsive Styles */
+
+/* Large screens (Desktops & Laptops) */
+@media (max-width: 1366px) {
+    .slide {
+        min-height: 45vh; /* Adjust slide height */
+    }
+
+    .header-contents button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+}
+
+/* Medium screens (Tablets & Smaller Laptops) */
+@media (max-width: 1024px) {
+    .slider {
+        flex-direction: row;
+        min-height: 40vh; /* Reduce slide height */
+    }
+
+    .slide {
+        min-height: 40vh; /* Reduce slide height */
+        border-radius: 20px;
+    }
+
+    .header-contents {
+        padding: 15px;
+    }
+
+    .header-contents button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .card1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Small screens (Mobile Devices) */
+@media (max-width: 768px) {
+    .slider-container {
+        overflow: hidden;
+        width: 100%;
+        max-height: 40vh;
+        border-radius: 20px;
+    }
+    .slider {
+        flex-direction: column; /* Stack slides vertically */
+        
+    }
+
+    .slide {
+        min-height: 35vh; /* Reduce height */
+        border-radius: 15px;
+        margin-bottom: 30px;
+    }
+
+    .header-contents {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .header-contents button {
+        font-size: 12px;
+        padding: 8px 18px;
+    }
+
+    .card1 {
+        flex-direction: column; /* Stack cards vertically */
+        text-align: center;
+    }
+}
+
+/* Extra Small screens (Mobile under 480px) */
+@media (max-width: 480px) {
+    .slider-container {
+        overflow: hidden;
+        width: 100%;
+        max-height: 40vh;
+    }
+    
+   
+
+    .header-contents {
+        font-size: 12px; /* Smaller text */
+    }
+
+    .header-contents button {
+        font-size: 10px;
+        padding: 6px 15px;
+    }
+
+    .card1 {
+        text-align: center;
+        padding: 10px;
+    }
+}

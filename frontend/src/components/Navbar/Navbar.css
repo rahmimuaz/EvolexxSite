@@ -273,3 +273,61 @@
     }
     
 }
+
+
+@media (max-width: 1366px) { /* Large Laptops */
+    .navbar-logo {
+        width: 130px; /* Slightly reduce logo size */
+    }
+
+    .navbar-menu {
+        gap: 30px; /* Reduce spacing between menu items */
+        font-size: 22px; /* Adjust font size */
+    }
+
+    .navbar-menu li {
+        font-size: 16px;
+        padding: 5px 0px;
+    }
+
+    .navbar-right {
+        margin-left: 200px; /* Reduce right section margin */
+        gap: 30px;
+    }
+
+    .navbar-search {
+        width: 350px; /* Adjust search bar width */
+    }
+
+    .navbar-search input {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1024px) { /* Smaller Laptops */
+    .navbar-logo {
+        width: 120px; /* Adjust logo size */
+    }
+
+    .navbar-menu {
+        gap: 20px; /* Reduce spacing */
+        font-size: 20px; /* Adjust font size */
+    }
+
+    .navbar-menu li {
+        font-size: 15px;
+    }
+
+    .navbar-right {
+        margin-left: 100px; /* Adjust margin */
+        gap: 20px;
+    }
+
+    .navbar-search {
+        width: 300px; /* Adjust search bar */
+    }
+
+    .navbar-search input {
+        font-size: 14px;
+    }
+}
