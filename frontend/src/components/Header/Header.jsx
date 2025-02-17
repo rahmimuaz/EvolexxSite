@@ -17,7 +17,11 @@ const Header = ({ scrollToProducts }) => {
       setIsTransitioning(true);
       setIndex((prevIndex) => prevIndex + 1);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     }, 5000); // Slide every 3 seconds
+=======
+    }, 3000);
+>>>>>>> Stashed changes
 =======
     }, 3000);
 >>>>>>> Stashed changes
