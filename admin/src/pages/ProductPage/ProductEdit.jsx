@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import './UpdateModal.css'; 
+import './ProductList.css';
 import { assets } from '../../assets/assets';
 
 const UpdateModal = ({ isOpen, onRequestClose, product, onUpdate }) => {

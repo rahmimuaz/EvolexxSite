@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'; 
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import UpdateModal from './UpdateModal';
+import UpdateModal from './ProductEdit';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import Papa from 'papaparse';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import './List.css';
+import './ProductList.css'; 
 import notiIcon from '../../assets/noti_icon.jpeg'; // Import your notification icon
 import { Link } from 'react-router-dom'; // Import Link for navigation
 
@@ -167,8 +167,7 @@ const List = () => {
           <li className="sidebar-item"><Link to="/orders">Orders</Link></li>
           <li className="sidebar-item"><Link to="/users">Users</Link></li>
           <li className="sidebar-item"><Link to="/sales">Sales</Link></li>
-          <li className="sidebar-item"><Link to="/register"> Register Employee</Link></li>
-          <li className="sidebar-item"><Link to="/acess"> Other Dashboards</Link></li>
+          <li className="sidebar-item"><Link to="/suppliers">Suppliers</Link></li>
         </ul>
       </div>
       

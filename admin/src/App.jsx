@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
-import Add from './pages/Add/Add';
-import List from './pages/List/List';
+import Add from './pages/ProductPage/ProductAdding';
+import List from './pages/ProductPage/ProductList';
 import Orders from './pages/Orders/Orders';
 import Driver from './pages/driver/Driver'; //DS
 import AdminDashboard from './pages/Dashboard/AdminDashboard';
@@ -39,11 +39,10 @@ const App = () => {
       <hr />
       <div className="app-content">
         <Routes>
-          <Route path="/" element={<Add />} />
+          <Route path="/" element={<AdminDashboard />} />
           <Route path="/add" element={<Add />} />
           <Route path="/list" element={<List />} />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/dashboard/admin" element={<AdminDashboard />} />
           <Route path="/dashboard/cashier" element={<CashierDashboard />} />
 
           <Route path="/logistics" element={<LogisticsManagerDashboard />} />
