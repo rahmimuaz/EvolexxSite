@@ -10,14 +10,8 @@ import orderRoutes from './routes/orderRoutes.js';
 import 'dotenv/config'
 import cartRouter from './routes/cartRoute.js';
 import router from './routes/invoiceRoutes.js';
-import inquiryRoutes from './routes/inquiryRoutes.js';
-import repliesRoutes from './routes/replies.js';
 import supplierRoutes from './routes/supplierRoutes.js';
-
 import invoiceRouter from './routes/invoiceRoutes.js';
-import leaveRoutes from './routes/leaveRoutes.js';
-import employeeRoutes from './routes/employeeRoutes.js';
-import employeeRouter from './routes/employee.js'
 import cardRoutes from './routes/cardRoutes.js';
 
 
@@ -40,16 +34,13 @@ app.use('/drivers', driverRoutes);
 app.use('/api', orderRoutes);
 app.use('/api/cart',cartRouter)
 app.use('/api/invoice', router);
-app.use('/inquiries', inquiryRoutes);
-app.use('/replies', repliesRoutes);
+
 app.use('/api/suppliers', supplierRoutes);
 
-app.use('/api/leaves', leaveRoutes);
-app.use('/api', employeeRoutes);
+
 app.use('/api/suppliers', supplierRoutes);
 app.use('/api/invoice', invoiceRouter); 
 app.use('/api', cardRoutes);
-app.use('/api', employeeRouter);
 
 // Static file serving
 app.use('/images', express.static('uploads'));
