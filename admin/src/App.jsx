@@ -1,8 +1,9 @@
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
-import Add from './pages/ProductPage/ProductAdding';
-import List from './pages/ProductPage/ProductList';
+import ProductAdding from './pages/ProductPage/ProductAdding';
+import ProductList from './pages/ProductPage/ProductList';
+import ProductEdit from './pages/ProductPage/ProductEdit';
 import Orders from './pages/Orders/Orders';
 import Driver from './pages/driver/Driver'; //DS
 import AdminDashboard from './pages/Dashboard/AdminDashboard';
@@ -28,10 +29,6 @@ import UpdateSupplier from './pages/Supplier/UpdateSupplier';
 import SupplierComponent from './components/DeliverySchedule/SupplierComponet';
 
 
-
-
-import DashboardAcess from "./pages/DashboardAccess/DashboardAccess"
-
 const App = () => {
   return (
     <div>
@@ -40,8 +37,9 @@ const App = () => {
       <div className="app-content">
         <Routes>
           <Route path="/" element={<AdminDashboard />} />
-          <Route path="/add" element={<Add />} />
-          <Route path="/list" element={<List />} />
+          <Route path="/ProductAdding" element={<ProductAdding />} />
+          <Route path="/ProductList" element={<ProductList />} />
+          <Route path="/ProductEdit" element={<ProductEdit />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/dashboard/cashier" element={<CashierDashboard />} />
 
@@ -64,7 +62,6 @@ const App = () => {
           <Route path="/addSupplier" element={<AddSupplier/>}/>
           <Route path="/listSupplier" element={<SupplierList/>}/>
           <Route path="/updateSupplier/:id" element={<UpdateSupplier />} />
-          <Route path="/acess" element={<DashboardAcess />} />
         </Routes>
       </div>
     </div>

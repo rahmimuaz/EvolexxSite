@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'; 
 import SalesGraph from "../../components/SalesGraph/SalesGraph";
 import RevenueGraph from "../../components/Revenue/RevenueGraph";
+import ProductAdding from '../ProductPage/ProductAdding';
 import notiIcon from '../../assets/noti_icon.jpeg'; 
 import './AdminDashboard.css';
 
@@ -48,14 +49,13 @@ const AdminDashboard = ({ totalOrders }) => { // Accept totalOrders as a prop
     <div className="admin-dashboard">
       <div className="adminSidebar">
         <ul className="sidebar-list">
-          <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li>
-          <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
-          <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
+          <li className="sidebar-item"><Link to="/">Dashboard</Link></li>
+          <li className="sidebar-item"><Link to="/ProductAdding">Add Items</Link></li>
+          <li className="sidebar-item"><Link to="/ProductList">Product List</Link></li>
           <li className="sidebar-item"><Link to="/orders">Orders</Link></li>
           <li className="sidebar-item"><Link to="/users">Users</Link></li>
           <li className="sidebar-item"><Link to="/sales">Sales</Link></li>
-          <li className="sidebar-item"><Link to="/register"> Register Employee</Link></li>
-          <li className="sidebar-item"><Link to="/acess"> Other Dashboards</Link></li>
+
         </ul>
       </div>
       <div className="dashboard-content">

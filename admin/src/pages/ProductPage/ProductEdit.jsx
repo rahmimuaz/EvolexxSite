@@ -3,10 +3,10 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import './ProductList.css';
+import './ProductEdit.css';
 import { assets } from '../../assets/assets';
 
-const UpdateModal = ({ isOpen, onRequestClose, product, onUpdate }) => {
+const ProductEdit = ({ isOpen, onRequestClose, product, onUpdate }) => {
   const url = "http://localhost:5001";
 
   const [name, setName] = useState('');
@@ -162,4 +162,4 @@ const UpdateModal = ({ isOpen, onRequestClose, product, onUpdate }) => {
   );
 };
 
-export default UpdateModal;
+export default ProductEdit;

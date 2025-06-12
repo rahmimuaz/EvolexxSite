@@ -11,7 +11,7 @@ import './ProductList.css';
 import notiIcon from '../../assets/noti_icon.jpeg'; // Import your notification icon
 import { Link } from 'react-router-dom'; // Import Link for navigation
 
-const List = () => {
+const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -280,4 +280,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default ProductList;
